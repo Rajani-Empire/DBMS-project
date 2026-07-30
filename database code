@@ -1,0 +1,163 @@
+CREATE DATABASE IF NOT EXISTS university_management;
+USE university_management;
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    role ENUM('student','faculty','admin') NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE students (
+    student_id INT PRIMARY KEY,
+    student_reg_no VARCHAR(30) UNIQUE NOT NULL,
+    batch_year INT,
+    current_semester INT,
+
+    FOREIGN KEY (student_id)
+    REFERENCES users(id)
+    ON DELETE CASCADE
+);
+
+CREATE TABLE faculty (
+    faculty_id INT PRIMARY KEY,
+    designation VARCHAR(100),
+    office_room VARCHAR(50),
+
+    FOREIGN KEY (faculty_id)
+    REFERENCES users(id)
+    ON DELETE CASCADE
+);
+
+CREATE TABLE courses (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    course_code VARCHAR(20) UNIQUE NOT NULL,
+    title VARCHAR(150) NOT NULL,
+    credits DECIMAL(3,1) NOT NULL,
+    prerequisite_id INT,
+
+    FOREIGN KEY (prerequisite_id)
+    REFERENCES courses(id)
+    ON DELETE SET NULL
+);
+
+CREATE TABLE sections (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    course_id INT NOT NULL,
+    faculty_id INT NOT NULL,
+    semester_code VARCHAR(20),
+    room_number VARCHAR(30),
+    day_of_week VARCHAR(20),
+    time_slot VARCHAR(30),
+    capacity INT,
+
+    FOREIGN KEY(course_id)
+    REFERENCES courses(id)
+    ON DELETE CASCADE,
+
+    FOREIGN KEY(faculty_id)
+    REFERENCES faculty(faculty_id)
+    ON DELETE CASCADE
+);
+
+CREATE TABLE enrollments (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT,
+    section_id INT,
+    mid_marks DECIMAL(5,2),
+    final_marks DECIMAL(5,2),
+    letter_grade VARCHAR(2),
+
+    FOREIGN KEY(student_id)
+    REFERENCES students(student_id)
+    ON DELETE CASCADE,
+
+    FOREIGN KEY(section_id)
+    REFERENCES sections(id)
+    ON DELETE CASCADE
+);
+
+CREATE TABLE attendance (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT,
+    section_id INT,
+    attendance_date DATE,
+    status ENUM('Present','Absent','Late'),
+
+    FOREIGN KEY(student_id)
+    REFERENCES students(student_id)
+    ON DELETE CASCADE,
+
+    FOREIGN KEY(section_id)
+    REFERENCES sections(id)
+    ON DELETE CASCADE
+);
+
+
+
+
+USE university_management;
+
+INSERT INTO users (name, email, password_hash, role)
+VALUES
+('Rajani Akther', 'rajani@gmail.com', '123456', 'student'),
+('Dr. Rahman', 'rahman@sust.edu', '123456', 'faculty'),
+('Admin', 'admin@sust.edu', '123456', 'admin');
+
+INSERT INTO students
+(student_id, student_reg_no, batch_year, current_semester)
+VALUES
+(1, '2022331001', 2022, 2);
+
+INSERT INTO faculty
+(faculty_id, designation, office_room)
+VALUES
+(2, 'Assistant Professor', 'Room-305');
+
+INSERT INTO courses
+(course_code, title, credits, prerequisite_id)
+VALUES
+('SWE101', 'Introduction to Software Engineering', 3.0, NULL);
+
+INSERT INTO sections
+(course_id, faculty_id, semester_code, room_number, day_of_week, time_slot, capacity)
+VALUES
+(1, 2, 'Spring-2026', 'A-401', 'Sunday', '10:00-11:30', 40);
+
+INSERT INTO enrollments
+(student_id, section_id, mid_marks, final_marks, letter_grade)
+VALUES
+(1, 1, 28, 55, 'A');
+
+INSERT INTO attendance
+(student_id, section_id, attendance_date, status)
+VALUES
+(1, 1, '2026-07-13', 'Present');
+
+SELECT * FROM users;
+SELECT * FROM students;
+SELECT * FROM faculty;
+SELECT * FROM courses;
+SELECT * FROM sections;
+SELECT * FROM enrollments;
+SELECT * FROM attendance;
+
+SELECT CURRENT_USER();
+
+
+USE university_management;
+
+SELECT id, name, email, password_hash, role
+FROM users;
+
+INSERT INTO users (name, email, password_hash, role)
+VALUES ('Test User', 'test@gmail.com', '123456', 'student');
+
+SELECT id, name, email
+FROM users;
+
+INSERT INTO students
+(student_id, student_reg_no, batch_year, current_semester)
+VALUES (4, '2022331004', 2022, 2);
