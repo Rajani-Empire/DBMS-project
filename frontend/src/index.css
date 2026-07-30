@@ -1,22 +1,20 @@
-/* ========================================================
-   UNIVERSAL SEMANTIC VARIABLES & THEME TOKENS
-   ======================================================== */
+
 :root {
-  --primary: #2563eb; /* blue-600 */
-  --primary-hover: #1d4ed8; /* blue-700 */
-  --primary-light: #eff6ff; /* blue-50 */
+  --primary: #2563eb; 
+  --primary-hover: #1d4ed8; 
+  --primary-light: #eff6ff;
 
-  --success: #059669; /* emerald-600 */
-  --success-hover: #047857; /* emerald-700 */
-  --success-light: #ecfdf5; /* emerald-50 */
+  --success: #059669; 
+  --success-hover: #047857; 
+  --success-light: #ecfdf5; 
 
-  --warning: #d97706; /* amber-600 */
-  --warning-hover: #b45309; /* amber-700 */
-  --warning-light: #fef3c7; /* amber-50 */
+  --warning: #d97706;
+  --warning-hover: #b45309; 
+  --warning-light: #fef3c7; 
 
-  --danger: #dc2626; /* red-600 */
-  --danger-hover: #b91c1c; /* red-700 */
-  --danger-light: #fef2f2; /* red-50 */
+  --danger: #dc2626; 
+  --danger-hover: #b91c1c; 
+  --danger-light: #fef2f2; 
 
   --indigo: #4f46e5;
   --indigo-light: #e0e7ff;
@@ -47,10 +45,10 @@
   --shadow-xl:
     0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 
-  --radius-lg: 0.75rem; /* 12px */
-  --radius-xl: 1rem; /* 16px */
-  --radius-2xl: 1.5rem; /* 24px */
-  --radius-3xl: 2rem; /* 32px */
+  --radius-lg: 0.75rem; 
+  --radius-xl: 1rem; 
+  --radius-2xl: 1.5rem; 
+  --radius-3xl: 2rem; 
   --radius-full: 9999px;
 
   --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -58,9 +56,7 @@
     "Plus Jakarta Sans", "Outfit", system-ui, -apple-system, sans-serif;
 }
 
-/* ========================================================
-   GLOBAL RESETS & WRAPPERS
-   ======================================================== */
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -103,9 +99,7 @@ body {
   color: var(--primary);
 }
 
-/* ========================================================
-   GRID, FLEX & LAYOUT CONTROLS
-   ======================================================== */
+
 .flex {
   display: flex;
 }
@@ -145,9 +139,7 @@ body {
   }
 }
 
-/* ========================================================
-   LOGIN PORTAL COMPONENT
-   ======================================================== */
+
 .login-container {
   display: flex;
   align-items: center;
@@ -293,9 +285,7 @@ body {
   border-radius: 4px;
 }
 
-/* ========================================================
-   BUTTONS
-   ======================================================== */
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -354,9 +344,7 @@ body {
   color: white;
 }
 
-/* ========================================================
-   DASHBOARD LAYOUT (SHELL & SIDEBAR)
-   ======================================================== */
+
 .dashboard-layout {
   display: flex;
   height: 100vh;
@@ -365,7 +353,7 @@ body {
 }
 
 .sidebar {
-  width: 16rem; /* 256px */
+  width: 16rem; 
   background-color: var(--slate-900);
   color: var(--slate-300);
   display: flex;
@@ -446,9 +434,7 @@ body {
   padding: 2rem;
 }
 
-/* ========================================================
-   TOPBAR HEADER NAVIGATION
-   ======================================================== */
+
 .topbar {
   background-color: white;
   border-b: 1px solid var(--slate-100);
@@ -482,9 +468,7 @@ body {
   letter-spacing: 0.05em;
 }
 
-/* ========================================================
-   CARDS & STATS GRID
-   ======================================================== */
+
 .card {
   background-color: white;
   border: 1px solid var(--slate-100);

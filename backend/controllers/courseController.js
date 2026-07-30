@@ -1,9 +1,6 @@
 const db = require('../config/db');
 
-/**
- * Fetch all available course sections along with course details and faculty names
- * GET /api/courses/available
- */
+
 exports.getAllAvailableSections = async (req, res) => {
   try {
     const query = `
@@ -36,10 +33,7 @@ exports.getAllAvailableSections = async (req, res) => {
   }
 };
 
-/**
- * Enroll a student into a specific course section
- * POST /api/courses/enroll
- */
+
 exports.enrollInSection = async (req, res) => {
   const { student_id, section_id } = req.body;
 

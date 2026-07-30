@@ -2,10 +2,7 @@ const db = require('../config/db');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-/**
- * Handles user login for Admins, Faculty, and Students
- * POST /api/auth/login
- */
+
 exports.login = async (req, res) => {
   const { email, password } = req.body;
 
